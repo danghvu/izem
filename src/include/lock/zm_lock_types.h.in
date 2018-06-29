@@ -89,4 +89,13 @@ struct zm_mcsp {
     zm_mcs_t low_p __attribute__((aligned(64)));
 };
 
+typedef struct zm_shmcsp zm_shmcsp_t;
+
+struct zm_shmcsp {
+    zm_hmcs_t high_p __attribute__((aligned(64)));
+    zm_mcs_t low_p __attribute__((aligned(64)));
+    zm_atomic_flag_t own_p __attribute__((aligned(64)));
+    zm_atomic_flag_t filter;
+};
+
 #endif /* _IZEM_LOCK_TYPES_H */

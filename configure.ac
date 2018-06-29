@@ -206,6 +206,9 @@ case "$with_lock_if" in
     hmcs)
         ZM_LOCK_IF=ZM_HMCS_IF
     ;;
+    shmcsp)
+        ZM_LOCK_IF=ZM_SHMCSP_IF
+    ;;
     tlp)
         ZM_LOCK_IF=ZM_TLP_IF
     ;;

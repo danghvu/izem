@@ -83,6 +83,22 @@
 #define zm_abslock_acquire_lc(global_lock, local_context) zm_hmcs_acquire(*(global_lock))
 #define zm_abslock_release_c(global_lock, local_context)  zm_hmcs_release(*(global_lock))
 
+#elif defined(ZMTEST_USE_SHMCSP)
+#include <lock/zm_shmcsp.h>
+/* types */
+#define zm_abslock_t                   zm_shmcsp_t
+#define zm_abslock_localctx_t          int /*dummy*/
+#define zm_abslock_init                zm_shmcsp_init
+#define zm_abslock_destroy             zm_shmcsp_destroy
+/* Context-less routines */
+#define zm_abslock_acquire(global_lock)          zm_shmcsp_acquire(global_lock)
+#define zm_abslock_acquire_l(global_lock)        zm_shmcsp_acquire(global_lock)
+#define zm_abslock_release(global_lock)          zm_shmcsp_release(global_lock)
+/* Context-full routines */
+#define zm_abslock_acquire_c(global_lock, local_context)  zm_shmcsp_acquire(global_lock)
+#define zm_abslock_acquire_lc(global_lock, local_context) zm_shmcsp_acquire(global_lock)
+#define zm_abslock_release_c(global_lock, local_context)  zm_shmcsp_release(global_lock)
+
 #else
 #error "No lock implementation specified"
 #endif
