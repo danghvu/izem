@@ -13,6 +13,7 @@
 #define ZM_MCSP_IF      5
 #define ZM_TLP_IF       6
 #define ZM_SHMCSP_IF    7
+#define ZM_SCMCSP_IF    8
 
 /* default lock interface */
 #define ZM_LOCK_IF @ZM_LOCK_IF@
@@ -130,6 +131,23 @@
 #define zm_lock_acquire_c(L, ctxt)  zm_shmcsp_acquire_c(L, ctxt)
 #define zm_lock_acquire_lc(L, ctxt) zm_shmcsp_acquire_low_c(L, ctxt)
 #define zm_lock_release_c(L, ctxt)  zm_shmcsp_release_c(L, ctxt)
+
+#elif ZM_LOCK_IF == ZM_SCMCSP_IF
+
+#include <lock/zm_scmcsp.h>
+/* types */
+#define zm_lock_t                   zm_scmcsp_t
+#define zm_lock_ctxt_t              void*
+#define zm_lock_init                zm_scmcsp_init
+#define zm_lock_destroy(L)          zm_scmcsp_destroy(L)
+/* Context-full routines */
+#define zm_lock_acquire(L)          zm_scmcsp_acquire(*L)
+#define zm_lock_acquire_l(L)        zm_scmcsp_acquire_low(*L)
+#define zm_lock_release(L)          zm_scmcsp_release(*L)
+/* Context-full routines */
+#define zm_lock_acquire_c(L, ctxt)  zm_scmcsp_acquire_c(*L, ctxt)
+#define zm_lock_acquire_lc(L, ctxt) zm_scmcsp_acquire_low_c(*L, ctxt)
+#define zm_lock_release_c(L, ctxt)  zm_scmcsp_release_c(*L, ctxt)
 
 #else
 

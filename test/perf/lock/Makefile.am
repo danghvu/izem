@@ -14,8 +14,9 @@ TESTS = \
 	thread_scale_tlp \
 	thread_scale_mcsp \
 	thread_scale_shmcsp \
-	thread_scalep_shmcsp
-
+	thread_scalep_shmcsp \
+	thread_scale_scmcsp \
+	thread_scalep_scmcsp
 
 
 check_PROGRAMS = $(TESTS)
@@ -27,6 +28,7 @@ thread_scale_tkt_SOURCES = thread_scale.c
 thread_scale_mcs_SOURCES = thread_scale.c
 thread_scale_hmcs_SOURCES = thread_scale.c
 thread_scale_shmcsp_SOURCES = thread_scale.c
+thread_scale_scmcsp_SOURCES = thread_scale.c
 
 thread_ws_scale_tkt_SOURCES = thread_ws_scale.c
 thread_ws_scale_mcs_SOURCES = thread_ws_scale.c
@@ -36,14 +38,18 @@ thread_ws_scale_shmcsp_SOURCES = thread_ws_scale.c
 thread_scale_tlp_SOURCES = thread_scale_tlp.c
 thread_scale_mcsp_SOURCES = thread_scale_tlp.c
 thread_scalep_shmcsp_SOURCES = thread_scale_tlp.c
+thread_scalep_scmcsp_SOURCES = thread_scale_tlp.c
 
 thread_scale_tkt_CFLAGS = -DZMTEST_USE_TICKET -fopenmp
 thread_scale_mcs_CFLAGS = -DZMTEST_USE_MCS -fopenmp
 thread_scale_hmcs_CFLAGS = -DZMTEST_USE_HMCS -fopenmp
 thread_scale_shmcsp_CFLAGS = -DZMTEST_USE_SHMCSP -fopenmp
+thread_scale_scmcsp_CFLAGS = -DZMTEST_USE_SCMCSP -fopenmp
+
 thread_scale_tlp_CFLAGS = -DZMTEST_USE_TLP -fopenmp
 thread_scale_mcsp_CFLAGS = -DZMTEST_USE_MCSP -fopenmp
 thread_scalep_shmcsp_CFLAGS = -DZMTEST_USE_SHMCSP -fopenmp
+thread_scalep_scmcsp_CFLAGS = -DZMTEST_USE_SCMCSP -fopenmp
 
 thread_ws_scale_tkt_CFLAGS = -DZMTEST_USE_TICKET -fopenmp
 thread_ws_scale_mcs_CFLAGS = -DZMTEST_USE_MCS -fopenmp
@@ -54,9 +60,12 @@ thread_scale_tkt_LDFLAGS = -fopenmp
 thread_scale_mcs_LDFLAGS = -fopenmp
 thread_scale_hmcs_LDFLAGS = -fopenmp -lstdc++
 thread_scale_shmcsp_LDFLAGS = -fopenmp -lstdc++
+thread_scale_scmcsp_LDFLAGS = -fopenmp -lstdc++
+
 thread_scale_tlp_LDFLAGS = -fopenmp -lstdc++
 thread_scale_mcsp_LDFLAGS = -fopenmp
 thread_scalep_shmcsp_LDFLAGS = -fopenmp
+thread_scalep_scmcsp_LDFLAGS = -fopenmp
 
 thread_ws_scale_tkt_LDFLAGS = -fopenmp
 thread_ws_scale_mcs_LDFLAGS = -fopenmp

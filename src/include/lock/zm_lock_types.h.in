@@ -98,4 +98,7 @@ struct zm_shmcsp {
     zm_atomic_flag_t filter;
 };
 
+struct zm_scmcsp;
+typedef struct zm_scmcsp* zm_scmcsp_t;
+
 #endif /* _IZEM_LOCK_TYPES_H */

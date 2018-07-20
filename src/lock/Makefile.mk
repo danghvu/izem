@@ -10,4 +10,5 @@ zm_sources += \
 	lock/zm_tlp.c \
 	lock/zm_mcsp.c \
 	lock/zm_hmcs.c \
-	lock/zm_shmcsp.c
+	lock/zm_shmcsp.c \
+	lock/zm_scmcsp.c
